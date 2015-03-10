@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.digiarea.gct.launching.NATIVE_API"/>
+	<classpathentry kind="con" path="com.digiarea.gct.CLOSURE_LIBRARY/Default Closure Library"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

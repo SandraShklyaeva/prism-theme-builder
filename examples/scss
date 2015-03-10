@@ -1,0 +1,24 @@
+// Single line comment
+/* Multi-line
+comment */
+
+@import "foo.scss";
+@media (min-width: 600px) {}
+.seriousError {
+    @extend .error;
+}
+@for $i from 1 through 3 {}
+
+@font-face {
+	font-family: "opensans";
+	src: font-url("opensans.ttf");
+}
+
+$width: 5em;
+#main {
+    width: $width;
+}
+
+p.#{$name} {
+    #{$attr}-color: blue;
+}

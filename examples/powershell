@@ -1,0 +1,15 @@
+# This is a comment
+<# This is a
+multi-line comment #>
+
+$Name = "Alice"
+Write-Host "Hello, my name is $Name."
+
+Function SayHello([string]$name) {
+    Write-Host "Hello, $name."
+}
+$Names = @("Bob", "Alice")
+
+$Names | ForEach {
+    SayHello $_
+}

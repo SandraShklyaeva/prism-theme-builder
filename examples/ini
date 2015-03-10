@@ -1,0 +1,7 @@
+; This is a comment
+
+[owner]
+[database]
+
+name=prism
+file="somefile.txt"

@@ -1,0 +1,19 @@
+# This is a comment
+
+"foo \"bar\" baz"
+'foo \'bar\' baz'
+
+/foo?[ ]*bar/
+
+$foo = 5;
+class InstTest
+  def set_foo(n)
+    @foo = n
+  end
+  def set_bar(n)
+    @bar = n
+  end
+end</code></pre>
+
+<h2>Symbols</h2>
+<pre><code>mystring = :steveT;

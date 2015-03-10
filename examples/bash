@@ -1,0 +1,25 @@
+#!/bin/bash
+# This is a comment
+
+STRING="Hello World"
+'Single and
+multi-line strings are supported.'
+"Single and
+multi-line strings are supported."
+
+echo $STRING
+args=("$@")
+echo ${args[0]} ${args[1]} ${args[2]}
+
+for (( i=0;i<$ELEMENTS;i++)); do
+	echo ${ARRAY[${i}]}
+done
+while read LINE; do
+    ARRAY[$count]=$LINE
+    ((count++))
+done
+if [ -d $directory ]; then
+	echo "Directory exists"
+else
+	echo "Directory does not exists"
+fi
