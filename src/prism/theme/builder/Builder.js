@@ -7,6 +7,7 @@ goog.require("goog.events");
 goog.require("prism.theme.builder.Constants");
 goog.require("prism.theme.builder.LanguageTheme");
 goog.require("prism.theme.builder.LanguageThemeFactory");
+goog.require("prism.theme.builder.TokenStyle");
 goog.require("prism.theme.builder.model.GlobalLanguage");
 goog.require("prism.theme.builder.model.Language");
 goog.require("prism.theme.builder.model.LanguagePool");
@@ -346,7 +347,7 @@ prism.theme.builder.Builder.prototype.getTheme = function() {
 };
 
 /**
- * @return {any} the viewTheme
+ * @return {prism.theme.builder.LanguageTheme} the viewTheme
  */
 prism.theme.builder.Builder.prototype.getViewTheme = function() {
 	return this.viewTheme;
@@ -406,14 +407,14 @@ prism.theme.builder.Builder.prototype.languageSelected = function(lang) {
 };
 
 /**
- * @return {any} the currentToken
+ * @return {prism.theme.builder.TokenStyle} the currentToken
  */
 prism.theme.builder.Builder.prototype.getCurrentToken = function() {
 	return this.currentToken;
 };
 
 /**
- * @return {any} the currentLanguage
+ * @return {prism.theme.builder.model.Language} the currentLanguage
  */
 prism.theme.builder.Builder.prototype.getCurrentLanguage = function() {
 	return this.currentLanguage;

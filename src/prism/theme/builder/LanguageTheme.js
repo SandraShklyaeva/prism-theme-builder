@@ -24,7 +24,7 @@ prism.theme.builder.LanguageTheme = function() {
 };
 
 /**
- * @param {any}
+ * @param {String|null}
  *            name the name to set
  */
 prism.theme.builder.LanguageTheme.prototype.setName = function(name) {
@@ -32,7 +32,7 @@ prism.theme.builder.LanguageTheme.prototype.setName = function(name) {
 };
 
 /**
- * @return {any} the name
+ * @return {String|null} the name
  */
 prism.theme.builder.LanguageTheme.prototype.getName = function() {
 	return this.name;

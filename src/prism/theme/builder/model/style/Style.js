@@ -1,8 +1,12 @@
 goog.provide("prism.theme.builder.model.style.Style");
 
 /**
+ * 
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
+ * 
+ * @param {*}
+ *            value
  * @implements {prism.theme.builder.model.style.IStyle}
  */
 prism.theme.builder.model.style.Style = function(value) {
@@ -17,21 +21,22 @@ prism.theme.builder.model.style.Style.prototype.update = function(style) {
 };
 
 /**
- * @return {any} the name
+ * @return {(String|null)} the name
  */
 prism.theme.builder.model.style.Style.prototype.getName = function() {
 	return this.name;
 };
 
 /**
- * @param {any} name the name to set
+ * @param {(String|null)}
+ *            name the name to set
  */
 prism.theme.builder.model.style.Style.prototype.setName = function(name) {
 	this.name = name;
 };
 
 /**
- * @param {any}
+ * @param {*}
  *            value the value to set
  */
 prism.theme.builder.model.style.Style.prototype.setValue = function(value) {
@@ -39,14 +44,14 @@ prism.theme.builder.model.style.Style.prototype.setValue = function(value) {
 };
 
 /**
- * @return {any} the value
+ * @return {*} the value
  */
 prism.theme.builder.model.style.Style.prototype.getValue = function() {
 	return this.value;
 };
 
 /**
- * 
+ * @return {String}
  */
 prism.theme.builder.model.style.Style.prototype.toCSS = function() {
 	return this.name + ": " + this.value;

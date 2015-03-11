@@ -100,7 +100,7 @@ prism.theme.builder.ui.ViewPalette.prototype.createContent = function() {
 };
 
 /**
- * @param {any}
+ * @param {Element|null}
  *            headerContent the headerContent to set
  */
 prism.theme.builder.ui.ViewPalette.prototype.setHeaderContent = function(
@@ -109,14 +109,14 @@ prism.theme.builder.ui.ViewPalette.prototype.setHeaderContent = function(
 };
 
 /**
- * @return {any} the headerContent
+ * @return {Element|null} the headerContent
  */
 prism.theme.builder.ui.ViewPalette.prototype.getHeaderContent = function() {
 	return this.headerContent;
 };
 
 /**
- * @param {any}
+ * @param {Element|null}
  *            content the content to set
  */
 prism.theme.builder.ui.ViewPalette.prototype.setContent = function(content) {
@@ -124,19 +124,21 @@ prism.theme.builder.ui.ViewPalette.prototype.setContent = function(content) {
 };
 
 /**
- * @return {any} the content
+ * @return {Element|null} the content
  */
 prism.theme.builder.ui.ViewPalette.prototype.getContent = function() {
 	return this.content;
 };
 
 /**
- * 
+ * @param {String|null}
+ *            themeName
  */
 prism.theme.builder.ui.ViewPalette.prototype.themeSelected = function(themeName) {
-	if(themeName != null){
-		goog.dom.setTextContent(this.logo, "Viewing \"" + themeName + "\" theme");
-	}else{
+	if (themeName != null) {
+		goog.dom.setTextContent(this.logo, "Viewing \"" + themeName
+				+ "\" theme");
+	} else {
 		goog.dom.setTextContent(this.logo, "Viewing \"custom\" theme");
 	}
 };

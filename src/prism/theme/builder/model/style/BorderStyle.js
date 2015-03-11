@@ -3,16 +3,21 @@ goog.provide("prism.theme.builder.model.style.BorderStyle");
 goog.require("prism.theme.builder.model.style.Style");
 goog.require("prism.theme.builder.model.style.StyleConstants");
 
-
 /**
+ * 
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
  * 
- * @implements {prism.theme.builder.model.style.IStyle}
+ * @param {Number|null}
+ *            width
+ * @param {String|null}
+ *            style
+ * @param {String|null}
+ *            color
+ * @extends {prism.theme.builder.model.style.Style}
  */
 prism.theme.builder.model.style.BorderStyle = function(width, style, color) {
-	prism.theme.builder.model.style.Style.call(this,
-			null);
+	prism.theme.builder.model.style.Style.call(this, null);
 	this.width = width;
 	this.style = style;
 	this.color = color;
@@ -20,7 +25,8 @@ prism.theme.builder.model.style.BorderStyle = function(width, style, color) {
 goog.inherits(prism.theme.builder.model.style.BorderStyle,
 		prism.theme.builder.model.style.Style);
 /**
- * 
+ * @param {prism.theme.builder.model.style.BorderStyle}
+ *            style
  */
 prism.theme.builder.model.style.BorderStyle.prototype.update = function(style) {
 	if (style.getWidth() != null) {
@@ -35,21 +41,21 @@ prism.theme.builder.model.style.BorderStyle.prototype.update = function(style) {
 };
 
 /**
- * @return {any} the width
+ * @return {Number|null} the width
  */
 prism.theme.builder.model.style.BorderStyle.prototype.getWidth = function() {
 	return this.width;
 };
 
 /**
- * @return {any} the style
+ * @return {String|null} the style
  */
 prism.theme.builder.model.style.BorderStyle.prototype.getStyle = function() {
 	return this.style;
 };
 
 /**
- * @return {any} the color
+ * @return {String|null} the color
  */
 prism.theme.builder.model.style.BorderStyle.prototype.getColor = function() {
 	return this.color;
@@ -58,9 +64,10 @@ prism.theme.builder.model.style.BorderStyle.prototype.getColor = function() {
 /**
  * @override
  * @see prism.theme.builder.model.style.IStyle#toCSS()
+ * @return {String}
  */
 prism.theme.builder.model.style.BorderStyle.prototype.toCSS = function() {
-	return this.name + ": " + (this.width != null ? this.width + "px" : "1px") + " "
-			+ (this.style != null ? this.style : "solid") + " "
+	return this.name + ": " + (this.width != null ? this.width + "px" : "1px")
+			+ " " + (this.style != null ? this.style : "solid") + " "
 			+ (this.color != null ? this.color : "black");
 }

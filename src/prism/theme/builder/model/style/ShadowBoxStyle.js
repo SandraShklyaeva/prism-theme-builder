@@ -2,16 +2,26 @@ goog.provide("prism.theme.builder.model.style.ShadowBoxStyle");
 
 goog.require("prism.theme.builder.model.style.Style");
 
-
 /**
+ * 
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
  * 
- * @implements {prism.theme.builder.model.style.IStyle}
+ * @param {Number|null}
+ *            distanceX
+ * @param {Number|null}
+ *            distanceY
+ * @param {Number|null}
+ *            blur
+ * @param {Number|null}
+ *            radius
+ * @param {String|null}
+ *            color
+ * @extends {prism.theme.builder.model.style.Style}
  */
 prism.theme.builder.model.style.ShadowBoxStyle = function(distanceX, distanceY,
 		blur, radius, color) {
-	prism.theme.builder.model.style.Style.call(this,null);
+	prism.theme.builder.model.style.Style.call(this, null);
 	this.distanceX = distanceX;
 	this.distanceY = distanceY;
 	this.blur = blur;
@@ -22,7 +32,7 @@ goog.inherits(prism.theme.builder.model.style.ShadowBoxStyle,
 		prism.theme.builder.model.style.Style);
 
 /**
- * 
+ * @param {prism.theme.builder.model.style.ShadowBoxStyle} style
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.update = function(
 		style) {
@@ -44,35 +54,35 @@ prism.theme.builder.model.style.ShadowBoxStyle.prototype.update = function(
 };
 
 /**
- * @return {any} the distanceX
+ * @return {(Number|null)} the distanceX
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.getDistanceX = function() {
 	return this.distanceX;
 };
 
 /**
- * @return {any} the distanceY
+ * @return {(Number|null)} the distanceY
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.getDistanceY = function() {
 	return this.distanceY;
 };
 
 /**
- * @return {any} the blur
+ * @return {(Number|null)} the blur
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.getBlur = function() {
 	return this.blur;
 };
 
 /**
- * @return {any} the radius
+ * @return {(Number|null)} the radius
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.getRadius = function() {
 	return this.radius;
 };
 
 /**
- * @return {any} the color
+ * @return {(String|null)} the color
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.getColor = function() {
 	return this.color;
@@ -81,9 +91,11 @@ prism.theme.builder.model.style.ShadowBoxStyle.prototype.getColor = function() {
 /**
  * @override
  * @see prism.theme.builder.model.style.IStyle#toCSS()
+ * @return {String}
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.toCSS = function() {
-	return this.name + ": " + (this.distanceX != null ? this.distanceX + "px " : "0px ")
+	return this.name + ": "
+			+ (this.distanceX != null ? this.distanceX + "px " : "0px ")
 			+ (this.distanceY != null ? this.distanceY + "px " : "0px ")
 			+ (this.blur != null ? this.blur + "px " : "0px ")
 			+ (this.radius != null ? this.radius + "px " : "0px ")

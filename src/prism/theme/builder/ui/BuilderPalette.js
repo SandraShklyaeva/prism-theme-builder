@@ -1727,7 +1727,7 @@ prism.theme.builder.ui.BuilderPalette.prototype.disableDecoration = function(
 };
 
 /**
- * @param {any}
+ * @param {(Element|null)}
  *            headerContent the headerContent to set
  */
 prism.theme.builder.ui.BuilderPalette.prototype.setHeaderContent = function(
@@ -1736,21 +1736,21 @@ prism.theme.builder.ui.BuilderPalette.prototype.setHeaderContent = function(
 };
 
 /**
- * @return {any} the headerContent
+ * @return {(Element|null)} the headerContent
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getHeaderContent = function() {
 	return this.headerContent;
 };
 
 /**
- * @return {any} the content
+ * @return {(Element|null)} the content
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getContent = function() {
 	return this.content;
 };
 
 /**
- * @param {any}
+ * @param {(Element|null)}
  *            content the content to set
  */
 prism.theme.builder.ui.BuilderPalette.prototype.setContent = function(content) {
@@ -1758,7 +1758,10 @@ prism.theme.builder.ui.BuilderPalette.prototype.setContent = function(content) {
 };
 
 /**
+ * @param {!Element}
+ *            parent
  * @private
+ * @return {!Element}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getTable = function(parent) {
 	var table = goog.dom.createElement("div");
@@ -1768,7 +1771,10 @@ prism.theme.builder.ui.BuilderPalette.prototype.getTable = function(parent) {
 };
 
 /**
+ * @param {!Element}
+ *            table
  * @private
+ * @return {!Element}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getTableRow = function(table) {
 	var row = goog.dom.createElement("div");
@@ -1777,7 +1783,10 @@ prism.theme.builder.ui.BuilderPalette.prototype.getTableRow = function(table) {
 	return row;
 };
 /**
+ * @param {!Element}
+ *            row
  * @private
+ * @return {!Element}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getTableCell = function(row) {
 	var cell = goog.dom.createElement("div");
@@ -1786,7 +1795,12 @@ prism.theme.builder.ui.BuilderPalette.prototype.getTableCell = function(row) {
 	return cell;
 };
 /**
+ * @param {!Element}
+ *            row
+ * @param {!String}
+ *            label
  * @private
+ * @return {!Element}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getTableLabelCell = function(
 		row, label) {
@@ -1797,7 +1811,12 @@ prism.theme.builder.ui.BuilderPalette.prototype.getTableLabelCell = function(
 	return cell;
 };
 /**
+ * @param {!Element}
+ *            parent
+ * @param {Boolean|null}
+ *            includeInherit
  * @private
+ * @return {!Object}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getSmallColorPicker = function(
 		parent, includeInherit) {
@@ -1844,6 +1863,17 @@ prism.theme.builder.ui.BuilderPalette.prototype.getSmallColorPicker = function(
 };
 /**
  * @private
+ * @param {!Element}
+ *            parent
+ * @param {!Number}
+ *            sliderMin
+ * @param {!Number}
+ *            sliderMax
+ * @param {!Number}
+ *            sliderStep
+ * @param {Function|null}
+ *            listener
+ * @return {goog.ui.Slider}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getSlider = function(parent,
 		sliderMin, sliderMax, sliderStep, listener) {
@@ -1865,6 +1895,21 @@ prism.theme.builder.ui.BuilderPalette.prototype.getSlider = function(parent,
 };
 /**
  * @private
+ * @param {!Element}
+ *            parent
+ * @param {!Number}
+ *            sliderMin
+ * @param {!Number}
+ *            sliderMax
+ * @param {!Number}
+ *            sliderStep
+ * @param {Function|null}
+ *            textListener
+ * @param {Boolean}
+ *            strict
+ * @param {Boolean}
+ *            includeInherit
+ * @return {Object}
  */
 prism.theme.builder.ui.BuilderPalette.prototype.getSliderTextField = function(
 		parent, sliderMin, sliderMax, sliderStep, textListener, strict,

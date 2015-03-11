@@ -3,12 +3,20 @@ goog.provide("prism.theme.builder.model.style.ShadowTextStyle");
 goog.require("prism.theme.builder.model.style.Style");
 goog.require("prism.theme.builder.model.style.StyleConstants");
 
-
 /**
+ * 
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
  * 
- * @implements {prism.theme.builder.model.style.IStyle}
+ * @param {Number|null}
+ *            distanceX
+ * @param {Number|null}
+ *            distanceY
+ * @param {Number|null}
+ *            blur
+ * @param {String|null}
+ *            color
+ * @extends {prism.theme.builder.model.style.Style}
  */
 prism.theme.builder.model.style.ShadowTextStyle = function(distanceX,
 		distanceY, blur, color) {
@@ -22,7 +30,8 @@ goog.inherits(prism.theme.builder.model.style.ShadowTextStyle,
 		prism.theme.builder.model.style.Style);
 
 /**
- * 
+ * @param {prism.theme.builder.model.style.ShadowTextStyle}
+ *            style
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.update = function(
 		style) {
@@ -41,28 +50,28 @@ prism.theme.builder.model.style.ShadowTextStyle.prototype.update = function(
 };
 
 /**
- * @return {any} the blur
+ * @return {(Number|null)} the blur
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.getBlur = function() {
 	return this.blur;
 };
 
 /**
- * @return {any} the color
+ * @return {(String|null)} the color
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.getColor = function() {
 	return this.color;
 };
 
 /**
- * @return {any} the distanceX
+ * @return {(Number|null)} the distanceX
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.getDistanceX = function() {
 	return this.distanceX;
 };
 
 /**
- * @return {any} the distanceY
+ * @return {(Number|null)} the distanceY
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.getDistanceY = function() {
 	return this.distanceY;
@@ -71,9 +80,11 @@ prism.theme.builder.model.style.ShadowTextStyle.prototype.getDistanceY = functio
 /**
  * @override
  * @see prism.theme.builder.model.style.IStyle#toCSS()
+ * @return {String}
  */
 prism.theme.builder.model.style.ShadowTextStyle.prototype.toCSS = function() {
-	return this.name + ": " +(this.distanceX != null ? this.distanceX + "px " : "0px ")
+	return this.name + ": "
+			+ (this.distanceX != null ? this.distanceX + "px " : "0px ")
 			+ (this.distanceY != null ? this.distanceY + "px " : "0px ")
 			+ (this.blur != null ? this.blur + "px " : "0px ")
 			+ (this.color != null ? this.color : "black");

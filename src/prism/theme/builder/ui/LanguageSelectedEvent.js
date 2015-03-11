@@ -6,7 +6,8 @@ goog.require("goog.events.Event");
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
  *
- * @param {*} type
+ * @param {prism.theme.builder.model.Language} lang
+ * @param {prism.theme.builder.ui.EventType} type
  * @param {Object} opt_target
  * @extends {goog.events.Event}
  */
@@ -17,7 +18,7 @@ prism.theme.builder.ui.LanguageSelectedEvent = function(lang, type, opt_target) 
 goog.inherits(prism.theme.builder.ui.LanguageSelectedEvent, goog.events.Event);
 
 /**
- * @return {any} the language
+ * @return {prism.theme.builder.model.Language} the language
  */
 prism.theme.builder.ui.LanguageSelectedEvent.prototype.getLanguage = function() {
 	return this.lang;

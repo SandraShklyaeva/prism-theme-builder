@@ -24,7 +24,6 @@ goog.require("prism.theme.builder.ui.UIRenderer");
  */
 prism.theme.builder.ui.AbstractUI = function(opt_content, opt_renderer,
 		opt_domHelper) {
-
 	goog.ui.Control.call(this, opt_content, opt_renderer
 			|| prism.theme.builder.ui.UIRenderer.getInstance(), opt_domHelper);
 	this.palette = null;
@@ -43,7 +42,7 @@ prism.theme.builder.ui.AbstractUI.EventType = {
 };
 
 /**
- * @return {any} the palette
+ * @return {goog.ui.Container} the palette
  */
 prism.theme.builder.ui.AbstractUI.prototype.getPalette = function() {
 	return this.palette;
@@ -55,6 +54,9 @@ prism.theme.builder.ui.AbstractUI.prototype.getPalette = function() {
 prism.theme.builder.ui.AbstractUI.prototype.update = function() {
 };
 
+/**
+ * @param {Boolean} animate
+ */
 prism.theme.builder.ui.AbstractUI.prototype.show = function(animate) {
 	if (!animate) {
 		this.update();
