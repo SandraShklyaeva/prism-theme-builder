@@ -49,7 +49,7 @@ prism.theme.builder.ui.PrismPalette.prototype.render = function(parent) {
 			.appendChild(
 					button,
 					goog.dom
-							.htmlToDocumentFragment("<a class=\"Builder-Button\" target=\"_blank\" href=\"\"><i class=\"fa fa-github fa-lg\"></i>&nbsp;Fork on GitHub</a>"));
+							.htmlToDocumentFragment("<a class=\"Builder-Button\" target=\"_blank\" href=\"https://github.com/SandraShklyaeva/prism-theme-builder\"><i class=\"fa fa-github fa-lg\"></i>&nbsp;Fork on GitHub</a>"));
 	goog.dom.appendChild(content, button);
 
 	goog.dom.appendChild(this.palette, header);
