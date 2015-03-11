@@ -183,7 +183,7 @@ prism.theme.builder.LanguageTheme.prototype.download = function() {
 	} else {
 		var cssFile = prism.theme.builder.LanguageThemeFactory
 				.getCSSFile(this.name);
-		var url = "file:///C:/Users/daginno/workspaces/closureide2/prism-theme-builder/themes/"
+		var url = "themes/"
 				+ cssFile;
 		goog.net.XhrIo.send(url, function(e) {
 			var xhr = e.target;

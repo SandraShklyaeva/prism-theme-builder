@@ -10,11 +10,11 @@ prism.theme.builder.LanguageCodeFactory.getCode = function(lang, callback, obj) 
 	var code = prism.theme.builder.LanguageCodeFactory.codes[lang.getName()];
 	if (typeof code === 'undefined') {
 
-		var url = "file:///C:/Users/daginno/workspaces/closureide2/prism-theme-builder/examples/"
+		var url = "examples/"
 				+ lang.getName();
 
 		if (lang.isGlobal()) {
-			url = "file:///C:/Users/daginno/workspaces/closureide2/prism-theme-builder/examples/javascript";
+			url = "examples/javascript";
 		}
 
 		goog.net.XhrIo.send(url,
