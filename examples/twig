@@ -1,0 +1,21 @@
+{# Some comment
+on multiple lines
+with &lt;html>&lt;/html>
+inside #}
+
+{% if foo %} bar {% endif %}
+{% for key, value in arr if value %} {{ do_something() }} {% endfor %}
+{% include 'header.html' %}
+{% include 'template.html' with {'foo': 'bar'} %}
+
+{{ not a }}
+{{ 20 // 7 }}
+{{ b b-and c }}
+{% if phone matches '/^[\\d\\.]+$/' %} ... {% endif %}
+
+&lt;div>
+{% if foo %}
+	&lt;p>Foo!&lt;/p>
+{% else %}
+	&lt;p>Not foo...&lt;/p>
+{% endif %}

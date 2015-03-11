@@ -1,0 +1,9 @@
+% This is a comment
+
+\begin{document}
+\documentstyle[twoside,epsfig]{article}
+\usepackage{epsfig,multicol}
+
+$\alpha$
+H$_{2}$O
+45$^{\circ}$C

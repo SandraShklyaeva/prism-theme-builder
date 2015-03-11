@@ -1,0 +1,23 @@
+{{! This is a comment with &lt;p>some markup&lt;/p> in it }}
+{{! This is a comment }} {{ this_is_not }}
+
+&lt;p>{{ text }}&lt;/p>
+&lt;h1>{{article.title}}&lt;/h1>
+{{{ triple_stash_is_supported }}}
+{{articles.[10].[#comments]}}
+
+{{{link "See more..." story.url}}}
+{{ true }}
+{{ custom_helper 42 href="somepage.html" false }}
+
+&lt;div class="body">
+	{{#bold}}{{body}}{{/bold}}
+&lt;/div>
+{{#with story}}
+	&lt;div class="intro">{{{intro}}}&lt;/div>
+	&lt;div class="body">{{{body}}}&lt;/div>
+{{/with}}
+&lt;div class="{{#if test}}foo{{else}}bar{{/if}}">&lt;/div>
+{{#list array}}
+  {{@index}}. {{title}}
+{{/list}}

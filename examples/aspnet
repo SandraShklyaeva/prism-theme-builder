@@ -1,0 +1,11 @@
+<%-- This is a comment --%>
+<%-- This is a
+multi-line comment --%>
+
+<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ProductList.aspx.cs" Inherits="WingtipToys.ProductList" %>
+
+<%: Page.Title %>
+&lt;a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
+&lt;span>
+    <%#:Item.ProductName%>
+&lt;/span>

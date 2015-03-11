@@ -1,0 +1,57 @@
+&lt;p>&lt;/p>
+
+&lt;p
+>hello!
+&lt;/p>
+
+&lt;p>&lt;/p>
+
+&lt;p class=prism>&lt;/p>
+
+&lt;p data-foo>&lt;/p>
+&lt;p data-foo >&lt;/p>
+
+&lt;html:p foo:bar="baz" foo:weee>&lt;/html:p>
+
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;svg>&lt;/svg>
+
+&lt;!DOCTYPE html>
+&lt;html>&lt;/html>
+
+&lt;ns1:description>&lt;![CDATA[
+  CDATA is &lt;not> magical.
+]]>&lt;/ns1:description>
+
+&lt;!-- I'm a comment -->
+And i'm not
+
+&amp;amp; &amp;#x2665; &amp;#160; &amp;#x152;
+
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+	&lt;meta charset="utf-8" />
+	&lt;title>I can haz embedded CSS and JS&lt;/title>
+	&lt;style>
+		@media print {
+			p { color: red !important; }
+		}
+	&lt;/style>
+&lt;/head>
+&lt;body>
+	&lt;h1>I can haz embedded CSS and JS&lt;/h1>
+	&lt;script>
+	if (true) {
+		console.log('foo');
+	}
+	&lt;/script>
+
+&lt;/body>
+&lt;/html>
+
+&lt;l &lt;/ul>
+
+&lt;p title="foo
+bar
+baz">
