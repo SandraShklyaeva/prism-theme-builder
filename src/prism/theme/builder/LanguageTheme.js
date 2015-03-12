@@ -24,6 +24,15 @@ prism.theme.builder.LanguageTheme = function() {
 };
 
 /**
+ * 
+ */
+prism.theme.builder.LanguageTheme.prototype.getLabel = function() {
+	if (this.name != null) {
+		return prism.theme.builder.LanguageThemeFactory.getLabel(this.name);
+	}
+	return null;
+};
+/**
  * @param {String|null}
  *            name the name to set
  */
@@ -183,8 +192,7 @@ prism.theme.builder.LanguageTheme.prototype.download = function() {
 	} else {
 		var cssFile = prism.theme.builder.LanguageThemeFactory
 				.getCSSFile(this.name);
-		var url = "themes/"
-				+ cssFile;
+		var url = "themes/" + cssFile;
 		goog.net.XhrIo.send(url, function(e) {
 			var xhr = e.target;
 			var result = xhr.getResponseText();

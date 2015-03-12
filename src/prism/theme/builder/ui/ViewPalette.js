@@ -134,9 +134,9 @@ prism.theme.builder.ui.ViewPalette.prototype.getContent = function() {
  * @param {String|null}
  *            themeName
  */
-prism.theme.builder.ui.ViewPalette.prototype.themeSelected = function(themeName) {
-	if (themeName != null) {
-		goog.dom.setTextContent(this.logo, "Viewing \"" + themeName
+prism.theme.builder.ui.ViewPalette.prototype.themeSelected = function(theme) {
+	if (theme != null) {
+		goog.dom.setTextContent(this.logo, "Viewing \"" + theme.getLabel()
 				+ "\" theme");
 	} else {
 		goog.dom.setTextContent(this.logo, "Viewing \"custom\" theme");

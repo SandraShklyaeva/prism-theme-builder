@@ -36,9 +36,9 @@ prism.theme.builder.ui.ViewUI.prototype.update = function() {
 	goog.dom.removeNode(this.cssStyle);
 
 	if (this.builder.getViewTheme() != null) {
-		this.cssStyle = goog.cssom.addCssText(this.builder.getViewTheme().toCSS(null,
-				".theme-overview"), null);
-		this.palette.themeSelected(this.builder.getViewTheme().getName());
+		this.cssStyle = goog.cssom.addCssText(this.builder.getViewTheme()
+				.toCSS(null, ".theme-overview"), null);
+		this.palette.themeSelected(this.builder.getViewTheme());
 	}
 };
 
@@ -75,8 +75,24 @@ prism.theme.builder.ui.ViewUI.prototype.render = function(element) {
 			goog.dom.classlist.add(themeInnerWrapperDiv,
 					"Builder-ThemeOverview-Inner");
 
+			var author = prism.theme.builder.LanguageCodeFactory
+					.getAuthor(langName);
 			var themeHeader = goog.dom.createElement("h2");
-			goog.dom.setTextContent(themeHeader, langName);
+
+			if (author != null) {
+				goog.dom.setTextContent(themeHeader, lang.getLabel() + " / ");
+				var authorLabel = this.getDomHelper().createElement("a");
+				goog.dom.setProperties(authorLabel, {
+					"title" : "View author's profile on GitHub",
+					"href" : "https://github.com/" + author,
+					"target" : "_blank"
+				});
+				goog.dom.setTextContent(authorLabel, author);
+				goog.dom.appendChild(themeHeader, authorLabel);
+			} else {
+				goog.dom.setTextContent(themeHeader, lang.getLabel());
+			}
+
 			goog.dom.appendChild(themeWrapperDiv, themeHeader);
 
 			var themePre = goog.dom.createElement("pre");
@@ -109,9 +125,9 @@ prism.theme.builder.ui.ViewUI.prototype.render = function(element) {
 		}
 	}
 
-	if(this.builder.getViewTheme() != null){
-		this.cssStyle = goog.cssom.addCssText(this.builder.getViewTheme().toCSS(null,
-		".theme-overview"), null);
+	if (this.builder.getViewTheme() != null) {
+		this.cssStyle = goog.cssom.addCssText(this.builder.getViewTheme()
+				.toCSS(null, ".theme-overview"), null);
 	}
 
 	var content = this.getDomHelper().createElement("div");
@@ -125,5 +141,5 @@ prism.theme.builder.ui.ViewUI.prototype.render = function(element) {
 
 	var parentElement = this.getElement();
 	this.palette.render(parentElement);
-	
+
 };

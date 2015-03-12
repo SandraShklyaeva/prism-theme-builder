@@ -4,10 +4,12 @@ goog.provide("prism.theme.builder.Builder.State");
 goog.require("goog.cssom");
 goog.require("goog.dom");
 goog.require("goog.events");
-goog.require("prism.theme.builder.Constants");
+goog.require("goog.module.ModuleInfo");
+goog.require("goog.module.ModuleLoadCallback");
+goog.require("goog.module.ModuleLoader");
+goog.require("goog.net.jsloader");
 goog.require("prism.theme.builder.LanguageTheme");
 goog.require("prism.theme.builder.LanguageThemeFactory");
-goog.require("prism.theme.builder.TokenStyle");
 goog.require("prism.theme.builder.model.GlobalLanguage");
 goog.require("prism.theme.builder.model.Language");
 goog.require("prism.theme.builder.model.LanguagePool");
@@ -74,6 +76,53 @@ prism.theme.builder.Builder.prototype.currentLanguage = null;
  * 
  */
 prism.theme.builder.Builder.prototype.run = function() {
+	/*
+	 * LOAD PRISM
+	 */
+	this.loadPrism();
+};
+
+/**
+ * 
+ */
+prism.theme.builder.Builder.prototype.loadPrism = function() {
+	if (typeof components !== 'undefined') {
+		var moduleId = "prism";
+		var module = new goog.module.ModuleInfo(null, moduleId);
+		var langs = components["languages"];
+		var uris = [];
+		uris.push("lib/prism/prism-core.min.js");
+		for ( var langName in langs) {
+			if (langName != "meta") {
+				uris.push("lib/prism/prism-" + langName + ".min.js");
+			}
+		}
+		module.setUris(uris);
+
+		var self = this;
+		var moduleLoader = new goog.module.ModuleLoader();
+		var map = {};
+		map[moduleId] = module;
+
+		moduleLoader.loadModules([ moduleId ], map, function() {
+			self.loadBuilder();
+		}, function(error) {
+			console.error("We have a situation: Prism cannot be loaded: "
+					+ error);
+		}, function() {
+			console.error("We have a situation: Prism Loading Timeout!");
+		}, false);
+		
+	} else {
+		console
+				.error("We have a situation: Components are not found for Prism!");
+	}
+};
+
+/**
+ * 
+ */
+prism.theme.builder.Builder.prototype.loadBuilder = function() {
 	if (typeof Prism !== 'undefined') {
 		/*
 		 * INIT LANGUAGES
@@ -100,11 +149,12 @@ prism.theme.builder.Builder.prototype.run = function() {
 		 */
 		this.builderUI.hide(false);
 		this.overviewUI.hide(false);
-		this.toState(prism.theme.builder.Builder.State.THEMES);
+		this.toState(prism.theme.builder.Builder.State.THEMES,false);
 		/*
 		 * RUN PRISM
 		 */
 		Prism.highlightAll(false, null);
+
 		/*
 		 * UPDATE BUILDER
 		 */
@@ -177,7 +227,7 @@ prism.theme.builder.Builder.prototype.attachEvents = function() {
 };
 
 prism.theme.builder.Builder.prototype.toViewAllState = function(e) {
-	this.toState(prism.theme.builder.Builder.State.THEMES);
+	this.toState(prism.theme.builder.Builder.State.THEMES, true);
 }
 
 prism.theme.builder.Builder.prototype.toEditState = function(e) {
@@ -199,7 +249,7 @@ prism.theme.builder.Builder.prototype.toEditState = function(e) {
 
 	this.theme.toCustom();
 
-	this.toState(prism.theme.builder.Builder.State.EDITOR);
+	this.toState(prism.theme.builder.Builder.State.EDITOR, true);
 }
 
 prism.theme.builder.Builder.prototype.toViewState = function(e) {
@@ -217,13 +267,13 @@ prism.theme.builder.Builder.prototype.toViewState = function(e) {
 	} else {
 		this.viewTheme = this.theme;
 	}
-	this.toState(prism.theme.builder.Builder.State.VIEW);
+	this.toState(prism.theme.builder.Builder.State.VIEW, true);
 }
 
 /**
  * 
  */
-prism.theme.builder.Builder.prototype.toState = function(state) {
+prism.theme.builder.Builder.prototype.toState = function(state,animate) {
 	if (!this.changingState) {
 		this.changingState = true;
 		var currentUI = this.getUIByState(this.state);
@@ -244,9 +294,9 @@ prism.theme.builder.Builder.prototype.toState = function(state) {
 												function(e) {
 													this.changingState = false;
 												}, false, this);
-								nextUI.show(true);
+								nextUI.show(animate);
 							}, false, this);
-			currentUI.hide(true);
+			currentUI.hide(animate);
 		} else {
 			goog.events.listenOnce(nextUI,
 					prism.theme.builder.ui.AbstractUI.EventType.SHOWN,
@@ -254,7 +304,7 @@ prism.theme.builder.Builder.prototype.toState = function(state) {
 						this.changingState = false;
 					}, false, this);
 			// show next ui
-			nextUI.show(true);
+			nextUI.show(animate);
 		}
 	}
 };

@@ -7,28 +7,26 @@ goog.require("prism.theme.builder.model.style.Style");
 goog.require("prism.theme.builder.model.style.StyleConstants");
 
 prism.theme.builder.LanguageThemeFactory.themes = {
-	"default" : {
+	"prism" : {
 		css : "prism.css"
 	},
-	"coy" : {
-		author : "tshedor",
+	"prism-coy" : {
 		css : "prism-coy.css"
 	},
-	"dark" : {
+	"prism-dark" : {
 		css : "prism-dark.css"
 	},
-	"funky" : {
+	"prism-funky" : {
 		css : "prism-funky.css"
 	},
-	"okaidia" : {
-		author : "ocodia",
+	"prism-okaidia" : {
 		css : "prism-okaidia.css"
 	},
-	"tomorrow" : {
+	"prism-tomorrow" : {
+		title : "Tomorrow",
 		css : "prism-tomorrow.css"
 	},
-	"twilight" : {
-		author : "remybach",
+	"prism-twilight" : {
 		css : "prism-twilight.css"
 	}
 };
@@ -45,39 +43,65 @@ prism.theme.builder.LanguageThemeFactory.getCSSFile = function(themeName) {
 };
 
 prism.theme.builder.LanguageThemeFactory.getAuthor = function(themeName) {
-	var authorName = prism.theme.builder.LanguageThemeFactory.themes[themeName].author;
-	if (typeof authorName === "undefined") {
+	if (typeof prism.theme.builder.LanguageThemeFactory.themes[themeName] === "undefined") {
+		// unsupported theme
 		return null;
 	}
-	return authorName;
+	var theme = components["themes"][themeName];
+	if (typeof theme === "object") {
+		var authorName = theme["owner"];
+		if (typeof authorName !== "undefined") {
+			return authorName;
+		}
+	}
+	return null;
+};
+
+prism.theme.builder.LanguageThemeFactory.getLabel = function(themeName) {
+	if (typeof prism.theme.builder.LanguageThemeFactory.themes[themeName] === "undefined") {
+		// unsupported theme
+		return themeName;
+	}
+	var theme = components["themes"][themeName];
+	if (theme == null) {
+		return prism.theme.builder.LanguageThemeFactory.themes[themeName].title;
+	} else if (typeof theme === "object") {
+		var title = theme["title"];
+		if (typeof title !== "undefined") {
+			return title;
+		}
+	} else if (typeof theme === "string") {
+		return theme;
+	}
+	return themeName;
 };
 
 prism.theme.builder.LanguageThemeFactory.applyTheme = function(themeName, pool,
 		theme) {
 	theme.setName(themeName);
-	
+
 	prism.theme.builder.LanguageThemeFactory.applyGeneral(theme);
-	
+
 	switch (themeName) {
-	case "default":
+	case "prism":
 		this.applyDefaultTheme(pool, theme);
 		break;
-	case "coy":
+	case "prism-coy":
 		this.applyCoyTheme(pool, theme);
 		break;
-	case "dark":
+	case "prism-dark":
 		this.applyDarkTheme(pool, theme);
 		break;
-	case "funky":
+	case "prism-funky":
 		this.applyFunkyTheme(pool, theme);
 		break;
-	case "okaidia":
+	case "prism-okaidia":
 		this.applyOkaidiaTheme(pool, theme);
 		break;
-	case "tomorrow":
+	case "prism-tomorrow":
 		this.applyTomorrowTheme(pool, theme);
 		break;
-	case "twilight":
+	case "prism-twilight":
 		this.applyTwilightTheme(pool, theme);
 		break;
 	}
@@ -476,16 +500,17 @@ prism.theme.builder.LanguageThemeFactory.applyOkaidiaTheme = function(pool,
  *            theme
  */
 prism.theme.builder.LanguageThemeFactory.applyFunkyTheme = function(pool, theme) {
-	
+
 	var codeRegion = theme.getCodeRegionToken();
-	codeRegion.setStyle(
-			prism.theme.builder.model.style.StyleConstants.BACKGROUND,
-			new prism.theme.builder.model.style.Style("url('data:image/svg+xml;charset=utf-8,<svg%20version%3D\"1.1\"%20xmlns%3D\"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\"%20width%3D\"100\"%20height%3D\"100\"%20fill%3D\"rgba(0%2C0%2C0%2C.2)\">%0D%0A<polygon%20points%3D\"0%2C50%2050%2C0%200%2C0\"%20%2F>%0D%0A<polygon%20points%3D\"0%2C100%2050%2C100%20100%2C50%20100%2C0\"%20%2F>%0D%0A<%2Fsvg>');"));
+	codeRegion
+			.setStyle(
+					prism.theme.builder.model.style.StyleConstants.BACKGROUND,
+					new prism.theme.builder.model.style.Style(
+							"url('data:image/svg+xml;charset=utf-8,<svg%20version%3D\"1.1\"%20xmlns%3D\"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\"%20width%3D\"100\"%20height%3D\"100\"%20fill%3D\"rgba(0%2C0%2C0%2C.2)\">%0D%0A<polygon%20points%3D\"0%2C50%2050%2C0%200%2C0\"%20%2F>%0D%0A<polygon%20points%3D\"0%2C100%2050%2C100%20100%2C50%20100%2C0\"%20%2F>%0D%0A<%2Fsvg>');"));
 	codeRegion.setStyle(
 			prism.theme.builder.model.style.StyleConstants.BACKGROUND_SIZE,
 			new prism.theme.builder.model.style.Style("1em 1em"));
 
-	
 	var codeToken = theme.getCodeBlockToken();
 	codeToken.setStyle(
 			prism.theme.builder.model.style.StyleConstants.BACKGROUND_COLOR,
@@ -963,7 +988,8 @@ prism.theme.builder.LanguageThemeFactory.applyGeneral = function(theme) {
 	var blockToken = theme.getCodeRegionToken();
 	blockToken.setStyle(
 			prism.theme.builder.model.style.StyleConstants.FONT_FAMILY,
-			new prism.theme.builder.model.style.Style("Consolas, Monaco, 'Andale Mono', monospace"));
+			new prism.theme.builder.model.style.Style(
+					"Consolas, Monaco, 'Andale Mono', monospace"));
 	blockToken.setStyle(
 			prism.theme.builder.model.style.StyleConstants.DIRECTION,
 			new prism.theme.builder.model.style.Style("ltr"));

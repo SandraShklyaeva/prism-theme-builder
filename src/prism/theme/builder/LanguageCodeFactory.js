@@ -10,8 +10,7 @@ prism.theme.builder.LanguageCodeFactory.getCode = function(lang, callback, obj) 
 	var code = prism.theme.builder.LanguageCodeFactory.codes[lang.getName()];
 	if (typeof code === 'undefined') {
 
-		var url = "examples/"
-				+ lang.getName();
+		var url = "examples/" + lang.getName();
 
 		if (lang.isGlobal()) {
 			url = "examples/javascript";
@@ -31,6 +30,28 @@ prism.theme.builder.LanguageCodeFactory.getCode = function(lang, callback, obj) 
 		callback.call(obj, code);
 	}
 	return code;
+};
+
+prism.theme.builder.LanguageCodeFactory.getLabel = function(langName) {
+	var theme = components["languages"][langName];
+	if (typeof theme === "object") {
+		var title = theme["title"];
+		if (typeof title !== "undefined") {
+			return title;
+		}
+	}
+	return langName;
+};
+
+prism.theme.builder.LanguageCodeFactory.getAuthor = function(langName) {
+	var theme = components["languages"][langName];
+	if (typeof theme === "object") {
+		var owner = theme["owner"];
+		if (typeof owner !== "undefined") {
+			return owner;
+		}
+	}
+	return null;
 };
 
 prism.theme.builder.LanguageCodeFactory.codes = {};

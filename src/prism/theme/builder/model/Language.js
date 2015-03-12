@@ -1,5 +1,7 @@
 goog.provide("prism.theme.builder.model.Language");
 
+goog.require("prism.theme.builder.LanguageCodeFactory");
+
 /**
  * @constructor
  * @author Sandra https://github.com/SandraShklyaeva
@@ -26,6 +28,14 @@ prism.theme.builder.model.Language.prototype.addToken = function(
 	}
 	this.qualifiedTokenNames.push(tokenQualifiedName);
 };
+
+/**
+ * 
+ */
+prism.theme.builder.model.Language.prototype.getLabel = function() {
+	return prism.theme.builder.LanguageCodeFactory.getLabel(this.name);
+};
+
 /**
  * @return {String} the name
  */

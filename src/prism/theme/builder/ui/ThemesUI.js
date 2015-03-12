@@ -74,16 +74,17 @@ prism.theme.builder.ui.ThemesUI.prototype.render = function(element) {
 		var themeHeader = goog.dom.createElement("h2");
 
 		if (author != null) {
-			goog.dom.setTextContent(themeHeader, themeName + " / ");
+			goog.dom.setTextContent(themeHeader, theme.getLabel() + " / ");
 			var authorLabel = this.getDomHelper().createElement("a");
 			goog.dom.setProperties(authorLabel, {
+				"title" : "View author's profile on GitHub",
 				"href" : "https://github.com/" + author,
 				"target" : "_blank"
 			});
 			goog.dom.setTextContent(authorLabel, author);
 			goog.dom.appendChild(themeHeader, authorLabel);
 		} else {
-			goog.dom.setTextContent(themeHeader, themeName);
+			goog.dom.setTextContent(themeHeader, theme.getLabel());
 		}
 
 		goog.dom.appendChild(themeWrapperDiv, themeHeader);
