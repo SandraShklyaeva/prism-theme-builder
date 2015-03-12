@@ -8,7 +8,6 @@ The app lives here: [http://sandrashklyaeva.github.io/prism-theme-builder/](http
 Your contributions are more than welcome!
 Please submit a pull request or report an issue if you:
  - want to add a new theme
- - want to add syntax highlighting for a new language
  - want to improve examples for existing languages
  - have found a bug
 
