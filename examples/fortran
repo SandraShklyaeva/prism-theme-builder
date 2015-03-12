@@ -1,3 +1,37 @@
+! This is a comment
+
+! Strings
+"foo 'bar' baz"
+'foo ''bar'' baz'
+''
+ITALICS_'This is in italics'
+"test &
+	! Some "tricky comment" here
+	&test"
+	
+! Numbers
+473
++56
+-101
+21_2
+21_SHORT
+1976354279568241_8
+B'01110'
+B"010"
+O'047'
+O"642"
+Z'F41A'
+Z"00BC"
+-12.78
++1.6E3
+2.1
+-16.E4_8
+0.45E-4
+10.93E7_QUAD
+.123
+3E4
+
+! Full example
 MODULE MOD1
 TYPE INITIALIZED_TYPE
 	INTEGER :: I = 1 ! Default initialization

@@ -2,6 +2,7 @@
 /* this is also a comment,
 but written over multiple lines */
 
+// Numbers
 42
 -23
 3.14159
@@ -12,9 +13,11 @@ but written over multiple lines */
 1_000_000
 1_000_000.000_000_1
 
+// Strings
 let someString = "Some string literal value"
 var emptyString = ""
 
+// Control flow
 for index in 1...5 {
 	println("\(index) times 5 is \(index * 5)")
 }
@@ -41,6 +44,7 @@ switch someCharacter {
 		println("\(someCharacter) is not a vowel or a consonant")
 }
 
+// Classes and attributes
 class MyViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBOutlet var textFields: [UITextField]!

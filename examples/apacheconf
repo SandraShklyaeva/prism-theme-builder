@@ -1,3 +1,28 @@
+# This is a comment
+# <VirtualHost *:80>
+
+# Directives
+<Files .htaccess>
+	Order allow,deny
+	Deny from all
+</Files>
+
+# Variables
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+# Regex
+^(.*)$
+!^www\.
+
+#Directive flags
+[NC]
+[RC=301,L]
+
+# Strings
+AuthName "Fichiers réservés"
+
+# Full example
+
 ## BASIC PASSWORD PROTECTION
 AuthType basic
 AuthName "prompt"

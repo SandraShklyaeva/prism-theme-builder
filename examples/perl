@@ -3,24 +3,28 @@
 	Be Pods!
 =cut
 
+# Strings
 q/foo bar baz/;
 q awhy not ?a;
 qw(foo bar baz) q{foo bar baz}
-q[foo bar baz] qq&lt;foo bar baz>
+q[foo bar baz] qq<foo bar baz>
 "foo bar baz" 'foo bar baz' `foo bar baz`
 
+# Regex
 m/foo/ s/foo/bar/
 m zfooz s zfoozbarz
 qr(foo) m{foo} s(foo)(bar) s{foo}{bar}
-m[foo] m&lt;foo> tr[foo][bar] s&lt;foo>&lt;bar>
+m[foo] m<foo> tr[foo][bar] s<foo><bar>
 /foo/i
 
+# Variables
 ${^POSTMATCH}
 $^V
 $element_count = scalar(@whatever);
 keys(%users) = 1000;
 $1, $_, %!;
 
+# Numbers
 12345
 12345.67
 .23E-10 # a very small number
@@ -31,6 +35,7 @@ $1, $_, %!;
 0377 # octal (only numbers, begins with 0)
 0b011011 # binary
 
+# Full example
 sub read_config_file {
   my ($class, $filename) = @_;
 

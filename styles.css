@@ -156,12 +156,12 @@ margin-bottom: 10px;
 border-left: 4px solid #009179;
 }
 
-.Builder-ThemesOverview-Item  h2 a{
+.Builder-ThemesOverview-Item  h2 a, .Builder-ThemeOverview-Item  h2 a{
 text-decoration: none;
 color: #bbbbbb;
 }
 
-.Builder-ThemesOverview-Item  h2 a:hover{
+.Builder-ThemesOverview-Item  h2 a:hover, .Builder-ThemeOverview-Item  h2 a:hover{
 color: #02b79a;
 }
 

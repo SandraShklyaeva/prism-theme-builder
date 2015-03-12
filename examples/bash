@@ -1,16 +1,21 @@
-#!/bin/bash
 # This is a comment
 
+# Shebang
+#!/bin/bash
+
+# Strings
 STRING="Hello World"
 'Single and
 multi-line strings are supported.'
 "Single and
 multi-line strings are supported."
 
+# Variables
 echo $STRING
 args=("$@")
 echo ${args[0]} ${args[1]} ${args[2]}
 
+# Keywords
 for (( i=0;i<$ELEMENTS;i++)); do
 	echo ${ARRAY[${i}]}
 done

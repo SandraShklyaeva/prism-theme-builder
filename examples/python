@@ -1,6 +1,7 @@
 # This is a comment
-# -*- coding: &lt;encoding-name> -*-
+# -*- coding: <encoding-name> -*-
 
+# Strings
 "foo \"bar\" baz"
 'foo \'bar\' baz'
 """ "Multi-line" strings
@@ -8,6 +9,7 @@ are supported."""
 ''' 'Multi-line' strings
 are supported.'''
 
+# Numbers
 7
 2147483647
 0o177
@@ -30,6 +32,7 @@ are supported.'''
 1e100j
 3.14e-10j
 
+# Full example
 def median(pool):
     '''Statistical median to demonstrate doctest.
     >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])

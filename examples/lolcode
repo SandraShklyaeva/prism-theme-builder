@@ -1,3 +1,27 @@
+BTW Single line comment
+OBTW Multi-line
+comment TLDR
+
+BTW Strings and special characters
+"foo :"bar:" baz"
+"foo:)bar:>baz"
+"Interpolation :{works} too!"
+
+BTW Numbers
+42
+-42
+123.456
+
+BTW Variable declaration
+I HAS A var
+var R "THREE"
+var R 3
+
+BTW Types
+MAEK some_expr A YARN
+some_var IS NOW A NUMBR
+
+BTW Full example
 OBTW Convert a number to hexadecimal. This
      is returned as a string.
 TLDR

@@ -5,10 +5,12 @@
 // This is a comment
 But this is not
 
+// Doctype
 doctype html
 doctype 1.1
 doctype html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
 
+// Tags
 ul
   li Item A
   li Item B
@@ -18,9 +20,10 @@ input(type='checkbox', checked=true.toString())
 #content
 div#foo(data-bar="foo")&attributes({'data-foo': 'bar'})
 
+// Markup
+<div class="foo bar"></div>
 
-&lt;div class="foo bar">&lt;/div>
-
+// Control flow
 #user
   if user.description
     p.description= user.description
@@ -40,7 +43,8 @@ case friends
     p you have a friend
   default
     p you have #{friends} friends
-    
+
+// Inline JavaScript    
 script alert('test');
 script(type="text/javascript").
   alert('foo');
@@ -49,12 +53,13 @@ script(type="text/javascript").
 - for (var x = 0; x < 3; x++)
   li item
   
-
+// Keywords
 include ./includes/head.jade
 extends ./layout.jade
 block content
 append head
 
+// Mixins
 mixin list
   ul
     li foo

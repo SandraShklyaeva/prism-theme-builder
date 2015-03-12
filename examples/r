@@ -1,8 +1,10 @@
 # This is a comment
 
+# Strings
 "foo \"bar\" baz"
 'foo \'bar\' baz'
 
+# Full example
 # Goal: To make a latex table with results of an OLS regression.
 
 # Get an OLS --

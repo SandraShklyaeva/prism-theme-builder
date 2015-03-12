@@ -1,10 +1,13 @@
 # This is a comment
 
+# Strings
 "foo \"bar\" baz"
 'foo \'bar\' baz'
 
+# Regular expressions
 /foo?[ ]*bar/
 
+# Variables
 $foo = 5;
 class InstTest
   def set_foo(n)
@@ -13,7 +16,7 @@ class InstTest
   def set_bar(n)
     @bar = n
   end
-end</code></pre>
+end
 
-<h2>Symbols</h2>
-<pre><code>mystring = :steveT;
+# Symbols
+mystring = :steveT;

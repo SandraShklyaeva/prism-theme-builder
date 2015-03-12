@@ -2,9 +2,11 @@
 /* Multi-line
 comment */
 
+// Strings
 "foo \"bar\" baz"
 'foo \'bar\' baz'
 
+// Keywords
 Feature: Some terse yet descriptive text of what is desired
   In order to realize a named business value
   As an explicit system actor

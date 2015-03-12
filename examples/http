@@ -2,7 +2,6 @@ GET http://localhost:9999/foo.html HTTP/1.1
 Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate
 
-
 HTTP/1.1 200 OK
 Server: GitHub.com
 Date: Mon, 22 Dec 2014 18:25:30 GMT
@@ -19,8 +18,8 @@ Cache-Control: max-age=600
 Vary: Accept-Encoding
 Content-Encoding: gzip
 
-&lt;!DOCTYPE html>
-&lt;html lang="en">
-&lt;head>&lt;/head>
-&lt;body>&lt;/body>
-&lt;/html>
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body></body>
+</html>

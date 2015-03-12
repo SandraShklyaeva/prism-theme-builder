@@ -2,9 +2,11 @@
 <# This is a
 multi-line comment #>
 
+# Variable Interpolation
 $Name = "Alice"
 Write-Host "Hello, my name is $Name."
 
+# Full Example
 Function SayHello([string]$name) {
     Write-Host "Hello, $name."
 }

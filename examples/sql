@@ -4,6 +4,7 @@
 /* Multi-line
 comment */
 
+// Strings
 "foo \"bar\" baz"
 'foo \'bar\' baz'
 "Multi-line strings
@@ -11,17 +12,20 @@ are supported"
 'Multi-line strings
 are supported'
 
+// Variables
 SET @variable = 1;
 SET @$_ = 2;
 SET @"quoted-variable" = 3;
 SET @'quoted-variable' = 3;
 SET @`quoted-variable` = 3;
 
+// Operators
 SELECT 1 && 1;
 SELECT 1 OR NULL;
 SELECT 5 & 2*3;
 SELECT 2 BETWEEN 1 AND 3;
 
+// Functions and keywords
 SELECT COUNT(*) AS cpt, MAX(t.pos) AS max_pos
 FROM `my_table`
 LEFT JOIN `other_table` AS t
