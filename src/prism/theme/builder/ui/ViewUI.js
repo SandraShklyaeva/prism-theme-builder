@@ -45,7 +45,7 @@ prism.theme.builder.ui.ViewUI.prototype.update = function() {
 /**
  * 
  */
-prism.theme.builder.ui.ViewUI.prototype.render = function(element) {
+prism.theme.builder.ui.ViewUI.prototype.internalRender = function(element) {
 
 	this.scene = goog.dom.createElement("div");
 	goog.dom.classlist.add(this.scene, "Builder-ThemeOverviewWrapper");

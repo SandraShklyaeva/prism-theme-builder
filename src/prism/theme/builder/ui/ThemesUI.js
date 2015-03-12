@@ -43,8 +43,7 @@ prism.theme.builder.ui.ThemesUI.prototype.createContent = function() {
 /**
  * 
  */
-prism.theme.builder.ui.ThemesUI.prototype.render = function(element) {
-
+prism.theme.builder.ui.ThemesUI.prototype.internalRender = function(element) {
 	this.sceneStyles = [];
 
 	this.scene = goog.dom.createElement("div");

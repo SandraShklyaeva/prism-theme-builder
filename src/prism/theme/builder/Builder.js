@@ -133,23 +133,18 @@ prism.theme.builder.Builder.prototype.loadBuilder = function() {
 		 * INIT THEMES UI
 		 */
 		this.themesUI = new prism.theme.builder.ui.ThemesUI(this);
-		this.themesUI.render(document.body);
 		/*
 		 * INIT THEME VIEW UI
 		 */
 		this.overviewUI = new prism.theme.builder.ui.ViewUI(this);
-		this.overviewUI.render(document.body);
 		/*
 		 * INIT UI
 		 */
 		this.builderUI = new prism.theme.builder.ui.BuilderUI(this);
-		this.builderUI.render(document.body);
 		/*
 		 * TO THEMES STATE
 		 */
-		this.builderUI.hide(false);
-		this.overviewUI.hide(false);
-		this.toState(prism.theme.builder.Builder.State.THEMES,false);
+		this.toState(prism.theme.builder.Builder.State.THEMES,true);
 		/*
 		 * RUN PRISM
 		 */

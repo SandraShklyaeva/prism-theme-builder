@@ -34,7 +34,7 @@ prism.theme.builder.ui.BuilderUI.prototype.update = function() {
 /**
  * 
  */
-prism.theme.builder.ui.BuilderUI.prototype.render = function(element) {
+prism.theme.builder.ui.BuilderUI.prototype.internalRender = function(element) {
 	prism.theme.builder.ui.BuilderUI.base(this, 'render', element);
 
 	var parentElement = this.getElement();

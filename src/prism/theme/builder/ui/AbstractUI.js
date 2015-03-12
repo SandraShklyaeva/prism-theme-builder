@@ -28,6 +28,7 @@ prism.theme.builder.ui.AbstractUI = function(opt_content, opt_renderer,
 			|| prism.theme.builder.ui.UIRenderer.getInstance(), opt_domHelper);
 	this.palette = null;
 	this.setAllowTextSelection(true);
+	this.rendered = false;
 }
 goog.inherits(prism.theme.builder.ui.AbstractUI, goog.ui.Control);
 
@@ -55,9 +56,34 @@ prism.theme.builder.ui.AbstractUI.prototype.update = function() {
 };
 
 /**
- * @param {Boolean} animate
+ * 
+ */
+prism.theme.builder.ui.AbstractUI.prototype.renderUI = function(parent) {
+	if (!this.rendered) {
+		this.rendered = true;
+		if(parent == null){
+			parent = document.body;
+		}
+		this.internalRender(parent);
+	}
+};
+
+/**
+ * @protected
+ * @abstract
+ */
+prism.theme.builder.ui.AbstractUI.prototype.internalRender = function(parent) {
+
+};
+
+/**
+ * @param {Boolean}
+ *            animate
  */
 prism.theme.builder.ui.AbstractUI.prototype.show = function(animate) {
+	if (!this.rendered) {
+		this.renderUI();
+	}
 	if (!animate) {
 		this.update();
 		goog.style.setOpacity(this.getElement(), 1);
