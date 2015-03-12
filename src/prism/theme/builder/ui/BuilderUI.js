@@ -81,9 +81,9 @@ prism.theme.builder.ui.BuilderUI.prototype.fillCode = function(lang) {
 	 * APPLY CLASS
 	 */
 	if (lang == null || lang.isGlobal()) {
-		goog.dom.classlist.add(this.codeRegion, "language-javascript");
+		goog.dom.classlist.set(this.codeRegion, "language-javascript");
 	} else {
-		goog.dom.classlist.add(this.codeRegion, "language-" + lang.getName());
+		goog.dom.classlist.set(this.codeRegion, "language-" + lang.getName());
 	}
 	/*
 	 * REPLACE CODE
