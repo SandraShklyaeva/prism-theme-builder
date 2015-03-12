@@ -34,20 +34,24 @@ prism.theme.builder.ui.BuilderUI.prototype.update = function() {
 /**
  * 
  */
-prism.theme.builder.ui.BuilderUI.prototype.internalRender = function(element) {
-	prism.theme.builder.ui.BuilderUI.base(this, 'render', element);
+prism.theme.builder.ui.BuilderUI.prototype.render = function(element) {
+	if (!this.isInDocument()) {
+		if (element == null) {
+			element = document.body;
+		}
+		prism.theme.builder.ui.BuilderUI.base(this, 'render', element);
 
-	var parentElement = this.getElement();
+		var parentElement = this.getElement();
 
-	var content = this.getDomHelper().createElement("div");
-	goog.dom.classlist.add(content, "Builder-UIContent");
+		var content = this.getDomHelper().createElement("div");
+		goog.dom.classlist.add(content, "Builder-UIContent");
 
-	this.renderCodeRegion(content);
+		this.renderCodeRegion(content);
 
-	this.getDomHelper().appendChild(parentElement, content);
+		this.getDomHelper().appendChild(parentElement, content);
 
-	this.palette.render(parentElement);
-
+		this.palette.render(parentElement);
+	}
 };
 
 prism.theme.builder.ui.BuilderUI.prototype.renderCodeRegion = function(parent) {

@@ -43,84 +43,90 @@ prism.theme.builder.ui.ThemesUI.prototype.createContent = function() {
 /**
  * 
  */
-prism.theme.builder.ui.ThemesUI.prototype.internalRender = function(element) {
-	this.sceneStyles = [];
+prism.theme.builder.ui.ThemesUI.prototype.render = function(element) {
+	if (!this.isInDocument()) {
+		if (element == null) {
+			element = document.body;
+		}
+		
+		this.sceneStyles = [];
 
-	this.scene = goog.dom.createElement("div");
-	goog.dom.classlist.add(this.scene, "Builder-ThemesOverviewWrapper");
+		this.scene = goog.dom.createElement("div");
+		goog.dom.classlist.add(this.scene, "Builder-ThemesOverviewWrapper");
 
-	var themesDiv = goog.dom.createElement("div");
-	goog.dom.classlist.add(themesDiv, "Builder-ThemesOverview");
-	goog.dom.classlist.add(themesDiv, "pure-g");
+		var themesDiv = goog.dom.createElement("div");
+		goog.dom.classlist.add(themesDiv, "Builder-ThemesOverview");
+		goog.dom.classlist.add(themesDiv, "pure-g");
 
-	var themes = prism.theme.builder.LanguageThemeFactory.themes;
+		var themes = prism.theme.builder.LanguageThemeFactory.themes;
 
-	for ( var themeName in themes) {
-		var theme = new prism.theme.builder.LanguageTheme();
-		prism.theme.builder.LanguageThemeFactory.applyTheme(themeName,
-				this.builder.getTokens(), theme);
+		for ( var themeName in themes) {
+			var theme = new prism.theme.builder.LanguageTheme();
+			prism.theme.builder.LanguageThemeFactory.applyTheme(themeName,
+					this.builder.getTokens(), theme);
 
-		var themeWrapperWrapperDiv = goog.dom.createElement("div");
-		goog.dom.classlist
-				.set(themeWrapperWrapperDiv, "pure-u-1 pure-u-lg-1-2");
+			var themeWrapperWrapperDiv = goog.dom.createElement("div");
+			goog.dom.classlist.set(themeWrapperWrapperDiv,
+					"pure-u-1 pure-u-lg-1-2");
 
-		var themeWrapperDiv = goog.dom.createElement("div");
-		goog.dom.classlist.add(themeWrapperDiv, "theme-" + themeName);
-		goog.dom.classlist.add(themeWrapperDiv, "Builder-ThemesOverview-Item");
+			var themeWrapperDiv = goog.dom.createElement("div");
+			goog.dom.classlist.add(themeWrapperDiv, "theme-" + themeName);
+			goog.dom.classlist.add(themeWrapperDiv,
+					"Builder-ThemesOverview-Item");
 
-		var author = prism.theme.builder.LanguageThemeFactory
-				.getAuthor(themeName);
-		var themeHeader = goog.dom.createElement("h2");
+			var author = prism.theme.builder.LanguageThemeFactory
+					.getAuthor(themeName);
+			var themeHeader = goog.dom.createElement("h2");
 
-		if (author != null) {
-			goog.dom.setTextContent(themeHeader, theme.getLabel() + " / ");
-			var authorLabel = this.getDomHelper().createElement("a");
-			goog.dom.setProperties(authorLabel, {
-				"title" : "View author's profile on GitHub",
-				"href" : "https://github.com/" + author,
-				"target" : "_blank"
-			});
-			goog.dom.setTextContent(authorLabel, author);
-			goog.dom.appendChild(themeHeader, authorLabel);
-		} else {
-			goog.dom.setTextContent(themeHeader, theme.getLabel());
+			if (author != null) {
+				goog.dom.setTextContent(themeHeader, theme.getLabel() + " / ");
+				var authorLabel = this.getDomHelper().createElement("a");
+				goog.dom.setProperties(authorLabel, {
+					"title" : "View author's profile on GitHub",
+					"href" : "https://github.com/" + author,
+					"target" : "_blank"
+				});
+				goog.dom.setTextContent(authorLabel, author);
+				goog.dom.appendChild(themeHeader, authorLabel);
+			} else {
+				goog.dom.setTextContent(themeHeader, theme.getLabel());
+			}
+
+			goog.dom.appendChild(themeWrapperDiv, themeHeader);
+
+			var themeInnerWrapperDiv = goog.dom.createElement("div");
+			goog.dom.classlist.add(themeInnerWrapperDiv,
+					"Builder-ThemesOverview-Inner");
+
+			var themePre = goog.dom.createElement("pre");
+			var themeCode = goog.dom.createElement("code");
+			goog.dom.classlist.set(themeCode, "language-javascript");
+			goog.dom.setTextContent(themeCode, this.getDummyCode());
+
+			goog.dom.appendChild(themePre, themeCode);
+			goog.dom.appendChild(themeInnerWrapperDiv, themePre);
+			goog.dom.appendChild(themeWrapperDiv, themeInnerWrapperDiv);
+			this.createButtons(themeWrapperDiv, themeName);
+
+			goog.dom.appendChild(themeWrapperWrapperDiv, themeWrapperDiv);
+			goog.dom.appendChild(themesDiv, themeWrapperWrapperDiv);
+
+			this.sceneStyles.push(goog.cssom.addCssText(theme.toCSS(null,
+					(".theme-" + themeName)), null));
 		}
 
-		goog.dom.appendChild(themeWrapperDiv, themeHeader);
+		var content = this.getDomHelper().createElement("div");
+		goog.dom.classlist.add(content, "Builder-UIContent");
 
-		var themeInnerWrapperDiv = goog.dom.createElement("div");
-		goog.dom.classlist.add(themeInnerWrapperDiv,
-				"Builder-ThemesOverview-Inner");
+		this.getDomHelper().appendChild(this.scene, themesDiv);
+		this.getDomHelper().appendChild(content, this.scene);
+		this.setContent(content);
 
-		var themePre = goog.dom.createElement("pre");
-		var themeCode = goog.dom.createElement("code");
-		goog.dom.classlist.set(themeCode, "language-javascript");
-		goog.dom.setTextContent(themeCode, this.getDummyCode());
+		prism.theme.builder.ui.ThemesUI.base(this, 'render', element);
+		var parentElement = this.getElement();
 
-		goog.dom.appendChild(themePre, themeCode);
-		goog.dom.appendChild(themeInnerWrapperDiv, themePre);
-		goog.dom.appendChild(themeWrapperDiv, themeInnerWrapperDiv);
-		this.createButtons(themeWrapperDiv, themeName);
-
-		goog.dom.appendChild(themeWrapperWrapperDiv, themeWrapperDiv);
-		goog.dom.appendChild(themesDiv, themeWrapperWrapperDiv);
-
-		this.sceneStyles.push(goog.cssom.addCssText(theme.toCSS(null,
-				(".theme-" + themeName)), null));
+		this.palette.render(parentElement);
 	}
-
-	var content = this.getDomHelper().createElement("div");
-	goog.dom.classlist.add(content, "Builder-UIContent");
-
-	this.getDomHelper().appendChild(this.scene, themesDiv);
-	this.getDomHelper().appendChild(content, this.scene);
-	this.setContent(content);
-
-	prism.theme.builder.ui.ThemesUI.base(this, 'render', element);
-	var parentElement = this.getElement();
-
-	this.palette.render(parentElement);
-
 };
 
 prism.theme.builder.ui.ThemesUI.prototype.createButtons = function(parentNode,
