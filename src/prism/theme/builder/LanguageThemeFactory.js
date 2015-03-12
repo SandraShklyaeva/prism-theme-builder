@@ -1,8 +1,11 @@
 goog.provide("prism.theme.builder.LanguageThemeFactory");
 
 goog.require("goog.object");
-goog.require("prism.theme.builder.CodeBlockTokenStyle");
 goog.require("prism.theme.builder.TokenStyle");
+goog.require("prism.theme.builder.model.style.BorderStyle");
+goog.require("prism.theme.builder.model.style.GradientStyle");
+goog.require("prism.theme.builder.model.style.MarginPaddingStyle");
+goog.require("prism.theme.builder.model.style.ShadowBoxStyle");
 goog.require("prism.theme.builder.model.style.Style");
 goog.require("prism.theme.builder.model.style.StyleConstants");
 
@@ -122,6 +125,15 @@ prism.theme.builder.LanguageThemeFactory.applyTwilightTheme = function(pool,
 			new prism.theme.builder.model.style.Style("#141414"));
 	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.COLOR,
 			new prism.theme.builder.model.style.Style("white"));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BORDER,
+			new prism.theme.builder.model.style.BorderStyle(5, "solid", "hsl(0, 0%, 33%)"));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BORDER_RADIUS,
+			new prism.theme.builder.model.style.PixelStyle(5));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BOX_SHADOW,
+			new prism.theme.builder.model.style.ShadowBoxStyle(1, 1, 8, null, "black", true));
 
 	goog.object.forEach(pool.getPool(), function(token, tokenName, tokens) {
 		var styleToken = new prism.theme.builder.TokenStyle(token
@@ -382,6 +394,9 @@ prism.theme.builder.LanguageThemeFactory.applyOkaidiaTheme = function(pool,
 			new prism.theme.builder.model.style.Style("#272822"));
 	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.COLOR,
 			new prism.theme.builder.model.style.Style("white"));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BORDER_RADIUS,
+			new prism.theme.builder.model.style.PixelStyle(5));
 
 	goog.object.forEach(pool.getPool(), function(token, tokenName, tokens) {
 		var styleToken = new prism.theme.builder.TokenStyle(token
@@ -641,6 +656,15 @@ prism.theme.builder.LanguageThemeFactory.applyDarkTheme = function(pool, theme) 
 	blockToken.setStyle(
 			prism.theme.builder.model.style.StyleConstants.BACKGROUND_COLOR,
 			new prism.theme.builder.model.style.Style("#4D4033"));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BORDER,
+			new prism.theme.builder.model.style.BorderStyle(5, "solid", "hsl(30, 20%, 40%)"));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BORDER_RADIUS,
+			new prism.theme.builder.model.style.PixelStyle(5));
+	blockToken.setStyle(
+			prism.theme.builder.model.style.StyleConstants.BOX_SHADOW,
+			new prism.theme.builder.model.style.ShadowBoxStyle(1, 1, 8, null, "black", true));
 
 	goog.object.forEach(pool.getPool(), function(token, tokenName, tokens) {
 		var styleToken = new prism.theme.builder.TokenStyle(token
@@ -756,6 +780,11 @@ prism.theme.builder.LanguageThemeFactory.applyDarkTheme = function(pool, theme) 
  */
 prism.theme.builder.LanguageThemeFactory.applyDefaultTheme = function(pool,
 		theme) {
+	
+	var blockToken = theme.getCodeRegionToken();
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BACKGROUND_COLOR,
+			new prism.theme.builder.model.style.Style("#f5f2f0"));
+	
 	goog.object.forEach(pool.getPool(), function(token, tokenName, tokens) {
 		var styleToken = new prism.theme.builder.TokenStyle(token
 				.getQualifiedName(), token.getCSSName(), null);
@@ -877,7 +906,23 @@ prism.theme.builder.LanguageThemeFactory.applyCoyTheme = function(pool, theme) {
 			new prism.theme.builder.model.style.Style("#fdfdfd"));
 	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.COLOR,
 			new prism.theme.builder.model.style.Style("black"));
-
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BORDER_LEFT,
+			new prism.theme.builder.model.style.Style("10px solid #358ccb"));
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BACKGROUND_IMAGE,
+			new prism.theme.builder.model.style.GradientStyle("transparent", "50%", "rgba(69, 142, 209, 0.04)", "50%"));
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BACKGROUND_SIZE,
+			new prism.theme.builder.model.style.Style("3em 3em"));
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BACKGROUND_ORIGIN,
+			new prism.theme.builder.model.style.Style("content-box"));
+	blockToken.setStyle(prism.theme.builder.model.style.StyleConstants.BOX_SHADOW,
+			new prism.theme.builder.model.style.ShadowBoxStyle(-1, null, null, 1, "#dfdfdf"));
+	
+	var codeBlockToken = theme.getCodeBlockToken();
+	codeBlockToken.setStyle(prism.theme.builder.model.style.StyleConstants.PADDING,
+			new prism.theme.builder.model.style.MarginPaddingStyle(0, 10, 0, 10));
+	codeBlockToken.setStyle(prism.theme.builder.model.style.StyleConstants.DISPLAY,
+			new prism.theme.builder.model.style.Style("block"));
+	
 	goog.object.forEach(pool.getPool(), function(token, tokenName, tokens) {
 		var styleToken = new prism.theme.builder.TokenStyle(token
 				.getQualifiedName(), token.getCSSName(), null);

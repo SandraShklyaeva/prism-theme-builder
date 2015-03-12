@@ -13,6 +13,8 @@ prism.theme.builder.model.style.StyleConstants = {
    BOX_SHADOW: "box-shadow",
    TEXT_SHADOW: "text-shadow",
    BORDER: "border",
+   BORDER_RADIUS: "border-radius",
+   BORDER_LEFT: "border-left",
    TEXT_TRANSFORM: "text-transform",
    TEXT_DECORATION: "text-decoration",
    FONT_WEIGHT: "font-weight",
@@ -22,6 +24,8 @@ prism.theme.builder.model.style.StyleConstants = {
    LINE_HEIGHT: "line-height",
    FONT_SIZE: "font-size",
    BACKGROUND_COLOR: "background-color",
+   BACKGROUND_IMAGE: "background-image",
+   BACKGROUND_ORIGIN: "background-origin",
    BACKGROUND: "background",
    BACKGROUND_SIZE: "background-size",
    COLOR: "color",
@@ -30,5 +34,6 @@ prism.theme.builder.model.style.StyleConstants = {
    DIRECTION:"direction",
    TEXT_ALIGN: "text-align",
    WHITE_SPACE:"white-space",
-   WORD_BREAK:"word-break"
+   WORD_BREAK:"word-break",
+   DISPLAY:"display"
 };

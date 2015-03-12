@@ -1331,8 +1331,8 @@ prism.theme.builder.ui.BuilderPalette.prototype.fillStyleTargets = function() {
 			4, false));
 	this.selectStyleTargets.addItem(new goog.ui.Option("Block Code - <code>",
 			1, false));
-	this.selectStyleTargets
-			.addItem(new goog.ui.Option("Inline Code", 2, false));
+//	this.selectStyleTargets
+//			.addItem(new goog.ui.Option("Inline Code", 2, false));
 	// this.selectStyleTargets.addItem(new goog.ui.Option("Code Lines", 3,
 	// false));
 };

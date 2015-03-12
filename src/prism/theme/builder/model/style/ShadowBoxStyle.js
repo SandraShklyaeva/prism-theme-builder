@@ -20,19 +20,21 @@ goog.require("prism.theme.builder.model.style.Style");
  * @extends {prism.theme.builder.model.style.Style}
  */
 prism.theme.builder.model.style.ShadowBoxStyle = function(distanceX, distanceY,
-		blur, radius, color) {
+		blur, radius, color, inset) {
 	prism.theme.builder.model.style.Style.call(this, null);
 	this.distanceX = distanceX;
 	this.distanceY = distanceY;
 	this.blur = blur;
 	this.radius = radius;
 	this.color = color;
+	this.inset = inset;
 };
 goog.inherits(prism.theme.builder.model.style.ShadowBoxStyle,
 		prism.theme.builder.model.style.Style);
 
 /**
- * @param {prism.theme.builder.model.style.ShadowBoxStyle} style
+ * @param {prism.theme.builder.model.style.ShadowBoxStyle}
+ *            style
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.update = function(
 		style) {
@@ -94,10 +96,11 @@ prism.theme.builder.model.style.ShadowBoxStyle.prototype.getColor = function() {
  * @return {String}
  */
 prism.theme.builder.model.style.ShadowBoxStyle.prototype.toCSS = function() {
-	return this.name + ": "
-			+ (this.distanceX != null ? this.distanceX + "px " : "0px ")
+	var value = (this.distanceX != null ? this.distanceX + "px " : "0px ")
 			+ (this.distanceY != null ? this.distanceY + "px " : "0px ")
 			+ (this.blur != null ? this.blur + "px " : "0px ")
 			+ (this.radius != null ? this.radius + "px " : "0px ")
-			+ (this.color != null ? this.color : "black");
+			+ (this.color != null ? this.color : "black") + " " + (this.inset ? "inset" : "");
+	return this.name + ": " + value + ";\n" + "-webkit-box-shadow: " + value
+			+ ";\n" + "-moz-box-shadow: " + value;
 }
