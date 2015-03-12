@@ -63,7 +63,7 @@ prism.theme.builder.ui.ThemesUI.prototype.render = function(element) {
 
 		var themeWrapperWrapperDiv = goog.dom.createElement("div");
 		goog.dom.classlist
-				.set(themeWrapperWrapperDiv, "pure-u-1 pure-u-lg-1-3");
+				.set(themeWrapperWrapperDiv, "pure-u-1 pure-u-lg-1-2");
 
 		var themeWrapperDiv = goog.dom.createElement("div");
 		goog.dom.classlist.add(themeWrapperDiv, "theme-" + themeName);
