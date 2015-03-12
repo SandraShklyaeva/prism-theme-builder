@@ -1,3 +1,28 @@
+-- Single line comment
+{- Multi-line
+comment -}
+
+-- Strings and characters
+'a'
+'\n'
+'\^A'
+'\^]'
+'\NUL'
+'\23'
+'\o75'
+'\xFE'
+"Here is a backslant \\ as well as \137, \
+    \a numeric escape character, and \^X, a control character."
+    
+-- Numbers
+42
+123.456
+123.456e-789
+1e+3
+0o74
+0XAF
+    
+-- Full example
 hGetLine h =
   wantReadableHandle_ "Data.ByteString.hGetLine" h $
     \ h_@Handle__{haByteBuffer} -> do

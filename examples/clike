@@ -2,9 +2,11 @@
 /* Multi-line
 comment */
 
+// Strings
 "foo \"bar\" baz";
 'foo \'bar\' baz';
 
+// Numbers
 123
 123.456
 -123.456
@@ -13,6 +15,7 @@ comment */
 0xaf
 0xAF
 
+// Functions
 foo();
 Bar();
 _456();

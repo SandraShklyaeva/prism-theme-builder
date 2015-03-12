@@ -1,13 +1,17 @@
 ; This is a comment
 
+; Booleans
 #t
 #f
 
+; Strings
 "two \"quotes\" within"
 
+; Functions
 (lambda (x) (+ x 3))
 (apply vector 'a 'b '(c d e))
 
+; Full example
 ;; Calculation of Hofstadter's male and female sequences as a list of pairs
 
 (define (hofstadter-male-female n)

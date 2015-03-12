@@ -4,8 +4,10 @@
 a block
 comment *)
 
+-- Strings
 "foo \"bar\" baz"
 
+-- Operators
 12 + 2 * 5
 "DUMPtruck" is equal to "dumptruck"
 "zebra" comes after "aardvark"
@@ -13,6 +15,7 @@ comment *)
 { "is", 2} is contained by { "this", "is", 2, "cool" }
 set docRef to a reference to the first document
 
+-- Classes and units
 tell application "Finder"
 text 1 thru 5 of "Bring me the mouse."
 set averageTemp to 63 as degrees Fahrenheit

@@ -1,7 +1,9 @@
 ; This is a comment
 
+; Section title
 [owner]
 [database]
 
+; Properties
 name=prism
 file="somefile.txt"

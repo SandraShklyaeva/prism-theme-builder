@@ -1,3 +1,6 @@
+<!--- this is a comment -->
+
+<!--- Titles -->
 Title 1
 ==
 
@@ -11,6 +14,7 @@ Title 2
 ##### Title 5
 ###### Title 6
 
+<!--- Bold and italic -->
 *Italic*
 **Bold on
 multiple lines**
@@ -23,6 +27,7 @@ __An empty line
 
 is not allowed__
 
+<!--- Links -->
 [Prism](http://www.prismjs.com)
 [Prism](http://www.prismjs.com "Prism")
 
@@ -35,6 +40,7 @@ is not allowed__
 1. This is an
 2. ordered list
 
+<!--- Lists and quotes -->
 * *List item in italic*
 * **List item in bold**
 * [List item as a link](http://example.com "This is an example")
@@ -44,15 +50,17 @@ is not allowed__
 > _italic here_, __bold there__
 > And a [link](http://example.com)
 
-Inline code between backticks `&lt;p>Paragraph&lt;/p>`
+<!--- Code -->
+Inline code between backticks `<p>Paragraph</p>`
 
     some_code(); /* Indented
     with four spaces */
 
 	some_code(); /* Indented
 	with a tab */
-	
-> This is a quotation
-> Containing &lt;strong>raw HTML&lt;/strong>
 
-&lt;p>*Italic text inside HTML tag*&lt;/p>
+<!--- Raw HTML -->
+> This is a quotation
+> Containing <strong>raw HTML</strong>
+
+<p>*Italic text inside HTML tag*</p>

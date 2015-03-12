@@ -4,6 +4,7 @@ old style comment *)
 Turbo Pascal comment }
 // This is a Delphi comment.
 
+// Strings and characters
 'This is a pascal string'
 ''
 'a'
@@ -12,8 +13,8 @@ Turbo Pascal comment }
 #$f4
 'A tabulator character: '#9' is easy to embed'</code></pre>
 
-<h2>Numbers</h2>
-<pre><code>123
+// Numbers
+123
 123.456
 132.456e-789
 132.456e+789
@@ -21,6 +22,7 @@ $7aff
 &17
 %11110101
 
+// Full example
 Type
     Str25    = String[25];
     TBookRec = Record

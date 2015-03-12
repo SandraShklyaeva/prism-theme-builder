@@ -4,11 +4,13 @@
 but this is not
 -# This is another comment
     on multiple lines
-    
+
+/ Doctype    
 !!! XML
 !!!
 !!! 5
 
+/ Tags
 %div
 	%span
 %span(class="widget_#{@widget.number}")
@@ -22,16 +24,18 @@ but this is not
   bar
 %img
 
+/ Markup
 %div
-  &lt;p id="blah">Blah!&lt;/p></code></pre>
+  <p id="blah">Blah!</p></code></pre>
 
+/ Inline Ruby
 <h2>Inline Ruby</h2>
 <pre><code>= ['hi', 'there', 'reader!'].join " "
 - foo = "hello"
 = link_to_remote "Add to cart",
     :url => { :action => "add", :id => product.id },
     :update => { :success => "cart", :failure => "error" }
-~ "Foo\n&lt;pre>Bar\nBaz&lt;/pre>"
+~ "Foo\n<pre>Bar\nBaz</pre>"
 %p
   - case 2
   - when 1
@@ -44,7 +48,7 @@ but this is not
   %p= i
 %p See, I can count!
 
-
+/ Filters
 %head
 	:css
 		#content: {

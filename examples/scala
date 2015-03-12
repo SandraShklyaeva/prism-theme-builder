@@ -2,11 +2,13 @@
 /* Mutli-line
 comment */
 
+// Strings and characters
 'a'
 "foo bar baz"
 """Multi-line
 string"""
 
+// Numbers
 0
 21
 0xFFFFFFFF
@@ -17,9 +19,11 @@ string"""
 1.0e-100
 .1
 
+// Symbols
 'x
 'identifier
 
+// Full example
 // Contributed by John Williams
 package examples
 

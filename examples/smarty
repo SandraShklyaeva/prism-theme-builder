@@ -1,7 +1,8 @@
-{* This is a comment with &lt;p>some markup&lt;/p> in it *}
+{* This is a comment with <p>some markup</p> in it *}
 {* Multi-line
 comment *}
 
+{* Variables *}
 {$foo}
 {$foo.bar}
 {$foo.$bar}
@@ -12,9 +13,11 @@ comment *}
 {$smarty.config.foo}
 {$foo[bar]}
 
+{* Strings and numbers *}
 {$foo[4]}
 {$foo['bar']}
 
+{* Tags and filters *}
 {assign var=foo value='baa'}
 {include file='header.tpl'}
 {$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}
@@ -26,8 +29,8 @@ comment *}
    width=$row_width
    division=#col_div#}
    
-   
-{if ( $amount &lt; 0 or $amount > 1000 ) and $volume >= #minVolAmt#}
+{* Control flow *}   
+{if ( $amount < 0 or $amount > 1000 ) and $volume >= #minVolAmt#}
    ...
 {/if}
 {if count($var) gt 0}{/if}
@@ -39,19 +42,20 @@ comment *}
 	{$smarty.foreach.foo.index}|{$smarty.foreach.foo.iteration},
 {/foreach}
 
-&lt;ul>
+<ul>
 {foreach from=$items key=myId item=i}
-  &lt;li>&lt;a href="item.php?id={$myId}">{$i.no}: {$i.label}&lt;/li>
+  <li><a href="item.php?id={$myId}">{$i.no}: {$i.label}</li>
 {/foreach}
-&lt;/ul>
+</ul>
 
+{* Literal section *}
 {literal}
-	&lt;script>
+	<script>
 		(function() { /* This is JS, not Smarty */ } ());
-	&lt;/script>
+	</script>
 {/literal}
 
-&lt;style type="text/css">
+<style type="text/css">
 {literal}
 /* this is an intersting idea for this section */
 .madIdea{
@@ -60,4 +64,4 @@ comment *}
     background-color: #001122;
 }
 {/literal}
-&lt;/style>
+</style>

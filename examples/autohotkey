@@ -1,3 +1,15 @@
+; This is a comment
+
+; Strings
+"foo ""bar"" baz"
+
+; Numbers
+123
+123.456
+123.456e789
+0xAF
+
+; Full Example
 ;----Open the selected favorite
 f_OpenFavorite:
 ; Fetch the array element that corresponds to the selected menu item:

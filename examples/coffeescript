@@ -2,6 +2,7 @@
 ### This is a
 multi-line comment###
 
+# Strings
 'foo \'bar\' baz'
 "foo \"bar\" baz"
 'Multi-line
@@ -13,9 +14,11 @@ are supported too'''
 """ "Block strings"
 are supported too"""
 
+# String interpolation
 "String #{interpolation} is supported"
 'This works #{only} between double-quoted strings'
 
+# Object properties
 kids =
   brother:
     name: "Max"
@@ -24,6 +27,7 @@ kids =
     name: "Ida"
     age:  9</code></pre>
 
+# Regexps
 <h2>Regexps</h2>
 <pre><code>/normal [r]egexp?/;
 /// ^(
@@ -31,6 +35,7 @@ kids =
   regexp          # with embedded comment
 ) ///
 
+# Classes
 class Animal
   constructor: (@name) ->
   move: (meters) ->
@@ -52,4 +57,5 @@ tom = new Horse "Tommy the Palomino"
 sam.move()
 tom.move()
 
+# Inline JavaScript
 `alert("foo")`

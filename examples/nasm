@@ -1,17 +1,20 @@
 ; This is a comment
 
+; Labels
 label1:     ; a non-local label
 .local:     ; this is really label1.local
 ..@foo:     ; this is a special symbol
 label2:     ; another non-local label
 .local:     ; this is really label2.local
 
+; Registers
 st0
 st1
 ax
 rax
 zmm4
 
+; Strings
 mov eax,'abcd'
 
 db    'hello'               ; string constant
@@ -23,10 +26,9 @@ db    'ninechars',0,0,0     ; and really looks like this
 db `\u263a`            ; UTF-8 smiley face
 db `\xe2\x98\xba`      ; UTF-8 smiley face
 db 0E2h, 098h, 0BAh    ; UTF-8 smiley face
-</code></pre>
 
-<h2>Numbers</h2>
-<pre><code>mov     ax,200          ; decimal
+; Numbers
+mov     ax,200          ; decimal
 mov     ax,0200         ; still decimal
 mov     ax,0200d        ; explicitly decimal
 mov     ax,0d200        ; also decimal

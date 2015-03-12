@@ -1,3 +1,28 @@
+// Single line comment
+/* Multi-line
+comment */
+
+// Strings
+"foo 'bar' baz"
+'foo "bar" baz'
+"""Multi-line
+string"""
+'''Multi-line
+string'''
+"String /containing/ slashes"
+
+// Slashy strings (regex)
+/.*foo.*/
+/regex"containing quotes"/
+$/.*"(.*)".*/(.*)/$
+
+// Interpolation inside GStrings and regex
+"The answer is ${21*2}"
+"The $foxtype ${foxcolor.join()} fox"
+/foo${21*2}baz/
+'No interpolation here : ${21*2}'
+
+// Full example
 #!/usr/bin/env groovy
 package model
 
@@ -16,7 +41,7 @@ class Distribution implements Distributable {
     def ternary = a ? b : c
     String name = "Guillaume"
     Closure description = null
-    List&lt;DownloadPackage> packages = []
+    List<DownloadPackage> packages = []
     String regex = ~/.*foo.*/
     String multi = '''
         multi line string

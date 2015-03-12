@@ -1,3 +1,28 @@
+-- A comment
+
+-- Simple string and character
+"A simple string with %"double quotes%""
+'a'
+
+-- Verbatim-strings
+"[
+  A aligned verbatim string
+]"
+"{
+  A non-aligned verbatim string
+}"
+
+-- Numbers
+1_000
+1_000.
+1_000.e+1_000
+1_000.1_000e-1_000
+.1
+0b1010_0001
+0xAF_5B
+0c75_22
+
+-- Full example
 note
   description: "Represents a person."
 

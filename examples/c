@@ -1,4 +1,20 @@
-#include &lt;stdio.h>
+// This is a comment
+/* This is a multi-line
+   comment */
+
+// Strings
+"foo \"bar\" baz"
+'foo \'bar\' baz'
+"Multi-line strings ending with a \
+are supported too."
+
+// Macro statements
+# include <stdio.h>
+#define PG_locked   0
+#define PG_error    1
+
+// Full example
+#include <stdio.h>
 main(int argc, char *argv[])
 {
    int c;

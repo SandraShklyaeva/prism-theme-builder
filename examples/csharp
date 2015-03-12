@@ -1,3 +1,13 @@
+// Single line comment
+/* Multi-line
+comment */
+
+// Strings
+"foo \"bar\" baz"
+'foo \'bar\' baz'
+@"Verbatim strings"
+
+// Full example
 using System.Windows.Forms;
 using System.Drawing;
 

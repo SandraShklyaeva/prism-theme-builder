@@ -1,3 +1,21 @@
+// Single line comment
+/* Multi-line
+comment */
+
+// Literal values
+17
+"hello"
+-3
+9.4
+null
+true
+false
+
+// Classes
+class A {}
+class B extends A {}
+
+// Full example
 package {
   import flash.display.*;
   import flash.events.*;
