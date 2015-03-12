@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Prism ▲ Theme Builder</title>
-		<link rel="shortcut icon" href="favicon.png" />
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link href="css/pure-min.css" rel="stylesheet" type="text/css">
-		<link href="css/grids-responsive-min.css" rel="stylesheet" type="text/css">
-		<link href="css/ui.css" rel="stylesheet" type="text/css">
-		<link href="styles.css" rel="stylesheet" type="text/css">
-		
-		
-		
-		<script src="lib/FileSaver.min.js"></script>
-		<script src="lib.js"></script>
-		<script>
- 		// Import Builder
- 		goog.require("prism.theme.builder.Builder");
-		</script>
-		
-	</head>
+<head>
+<meta charset="UTF-8">
+<title>Prism ▲ Theme Builder</title>
+<link rel="shortcut icon" href="favicon.png" />
 
-	<body>
-	
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="css/pure-min.css" rel="stylesheet" type="text/css">
+<link href="css/grids-responsive-min.css" rel="stylesheet"
+	type="text/css">
+<link href="css/ui.css" rel="stylesheet" type="text/css">
+<link href="styles.css" rel="stylesheet" type="text/css">
+
+
+
+<script src="lib/FileSaver.min.js"></script>
+<script src="bin/output.js"></script>
+<script>
+	// Import Builder
+	goog.require("prism.theme.builder.Builder");
+</script>
+
+</head>
+
+<body>
+
 	<script src="lib/prism/components.js" data-manual></script>
-		<script>
+	<script>
 		// Run Builder
-			prism.theme.builder.Builder.main();
-		</script>
-	</body>
+		prism.theme.builder.Builder.main();
+	</script>
+</body>
 
 </html>
