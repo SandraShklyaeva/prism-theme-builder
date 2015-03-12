@@ -4,7 +4,7 @@ goog.require("prism.theme.builder.model.style.Style");
 
 /**
  * @constructor
- * @author daginno
+ * @author Sandra https://github.com/SandraShklyaeva
  * 
  * @param {*}
  *            value
