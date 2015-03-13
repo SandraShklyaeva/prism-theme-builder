@@ -578,3 +578,30 @@ color: white;
  border-color: #009179;
     background: #00c5a5;
 }
+
+.Builder-ProgressBarWrapper {
+margin: 0px auto;
+ width: 200px;
+}
+
+    .progress-bar-horizontal {
+      position: absolute;
+      border: 1px solid #00b698;
+      background: white;
+      padding: 1px;
+      overflow: hidden;
+      margin: 2px;
+      height: 14px;
+      width: 200px;
+      top: 50%;
+	transform: translateY(-50%);
+      
+    }
+
+    .progress-bar-thumb {
+      position: relative;
+      background: #00c5a5;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }

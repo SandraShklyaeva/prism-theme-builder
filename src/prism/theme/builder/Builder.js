@@ -1,13 +1,13 @@
 goog.provide("prism.theme.builder.Builder");
 goog.provide("prism.theme.builder.Builder.State");
 
+goog.require("goog.Timer");
 goog.require("goog.cssom");
 goog.require("goog.dom");
 goog.require("goog.events");
 goog.require("goog.module.ModuleInfo");
-goog.require("goog.module.ModuleLoadCallback");
 goog.require("goog.module.ModuleLoader");
-goog.require("goog.net.jsloader");
+goog.require("goog.ui.ProgressBar");
 goog.require("prism.theme.builder.LanguageTheme");
 goog.require("prism.theme.builder.LanguageThemeFactory");
 goog.require("prism.theme.builder.model.GlobalLanguage");
@@ -76,10 +76,49 @@ prism.theme.builder.Builder.prototype.currentLanguage = null;
  * 
  */
 prism.theme.builder.Builder.prototype.run = function() {
+	this.loadLoader();
 	/*
 	 * LOAD PRISM
 	 */
-	this.loadPrism();
+	var self = this;
+	setTimeout(function(){
+		self.loadPrism();
+	},500);
+};
+
+/**
+ * 
+ */
+prism.theme.builder.Builder.prototype.loadLoader = function() {
+	this.loaderWrapper = goog.dom.createElement("div");
+	goog.dom.classlist.add(this.loaderWrapper, "Builder-ProgressBarWrapper");
+	
+	this.loaderBar = new goog.ui.ProgressBar(null);
+	this.loaderBar.render(this.loaderWrapper);
+
+	var last = 0;
+	var delta = 1;
+	this.loaderTimer = new goog.Timer(20);
+	goog.events.listen(this.loaderTimer, 'tick', function(e) {
+		if (last > 100 || last < 0) {
+			delta = -delta;
+		}
+		last += delta;
+		this.loaderBar.setValue(last);
+	}, false, this);
+	
+	goog.dom.appendChild(document.body, this.loaderWrapper);
+	
+	this.loaderTimer.start();
+};
+
+/**
+ * 
+ */
+prism.theme.builder.Builder.prototype.unloadLoader = function() {
+	this.loaderTimer.stop();
+	delete this.loaderTimer;
+	goog.dom.removeNode(this.loaderWrapper);
 };
 
 /**
@@ -112,7 +151,7 @@ prism.theme.builder.Builder.prototype.loadPrism = function() {
 		}, function() {
 			console.error("We have a situation: Prism Loading Timeout!");
 		}, false);
-		
+
 	} else {
 		console
 				.error("We have a situation: Components are not found for Prism!");
@@ -144,7 +183,7 @@ prism.theme.builder.Builder.prototype.loadBuilder = function() {
 		/*
 		 * TO THEMES STATE
 		 */
-		this.toState(prism.theme.builder.Builder.State.THEMES,true);
+		this.toState(prism.theme.builder.Builder.State.THEMES, true);
 		/*
 		 * RUN PRISM
 		 */
@@ -159,6 +198,10 @@ prism.theme.builder.Builder.prototype.loadBuilder = function() {
 		 * ATTACH EVENTS
 		 */
 		this.attachEvents();
+		/*
+		 * REMOVE LOADER
+		 */
+		this.unloadLoader();
 	} else {
 		console.error("We have a situation: Prism is not loaded!");
 	}
@@ -268,7 +311,7 @@ prism.theme.builder.Builder.prototype.toViewState = function(e) {
 /**
  * 
  */
-prism.theme.builder.Builder.prototype.toState = function(state,animate) {
+prism.theme.builder.Builder.prototype.toState = function(state, animate) {
 	if (!this.changingState) {
 		this.changingState = true;
 		var currentUI = this.getUIByState(this.state);
